@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>CSS debug alignment</title>
+  <style>
+    body {
+      overflow: hidden;
+      margin: 0px;
+      padding: 0px;
+      background: transparent;
+    }
+
+    .box {
+      padding: 20px 10px;
+      background: white;
+    }
+
+    .list {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .list-item {
+      cursor: pointer;
+      width: 50px;
+      height: 50px;
+      margin: 0 10px;
+      background: #fafafa;
+      border-radius: 50%;
+      transition: all .3s ease-in-out;
+      font-size: 0;
+    }
+
+    .list-item:hover {
+      transform: scale(1.1);
+    }
+
+    #red {
+      background: rgba(237, 50, 104, 1);
+    }
+
+    #red:hover {
+      box-shadow: 0 6px 20px rgba(237, 50, 104, .3);
+    }
+
+    #blue {
+      background: rgba(74, 144, 226, 1);
+    }
+
+    #blue:hover {
+      box-shadow: 0 6px 20px rgba(74, 144, 226, .3);
+    }
+
+    #remove {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 0 0 3px rgba(240, 240, 247, 1);
+      background: #fff;
+      position: relative;
+    }
+
+    #remove:before,
+    #remove:after {
+      content: "";
+      display: block;
+      position: absolute;
+      height: 30px;
+      width: 2px;
+      top: 10px;
+      left: 24px;
+      border-radius: 2px;
+      transform-origin: 50%;
+      background: #8B8A94;
+      transition: all .3s ease-in-out;
+    }
+
+    #remove:before {
+      transform: rotate(45deg);
+    }
+
+    #remove:after {
+      transform: rotate(-45deg);
+    }
+
+    #remove:hover {
+      box-shadow: inset 0 0 0 3px rgba(240, 240, 247, 1), 0 6px 20px rgba(240, 240, 247, 1);
+    }
+
+    #remove:hover:before {
+      transform: rotate(-45deg);
+    }
+
+    #remove:hover:after {
+      transform: rotate(225deg);
+    }
+  </style>
+  <script src="popup.js"></script>
+</head>
+
+<body>
+  <div class="box">
+    <ul class="list">
+      <li class="list-item js-activeColor" id="blue" data-colorAlpha="rgba(74,144,226,.1)" data-color="rgba(74,144,226,1)">Blue</li>
+      <li class="list-item js-activeColor" id="red" data-colorAlpha="rgba(237,50,104,.1)" data-color="rgba(237,50,104,1)">Red</li>
+      <li class="list-item" id="remove">Close</li>
+    </ul>
+  </div>
+</body>
+
+</html>
